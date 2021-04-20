@@ -14,13 +14,21 @@ import org.springframework.web.client.RestTemplate;
 import com.auditseverity.auditseverity.models.AuditDetails;
 import com.auditseverity.auditseverity.models.AuditResponse;
 import com.auditseverity.auditseverity.models.Benchmark;
+import com.auditseverity.auditseverity.service.AuditDetailsService;
 import com.auditseverity.auditseverity.service.AuditResponseService;
+import com.auditseverity.auditseverity.service.ProjectService;
 
 @RestController
 public class AuditController {
 
 	@Autowired
 	AuditResponseService auditResponseService;
+	
+	@Autowired
+	AuditDetailsService auditDetailService;
+	
+	@Autowired
+	ProjectService projectService;
 	
 	RestTemplate rt = new RestTemplate();
 	
@@ -30,30 +38,34 @@ public class AuditController {
 	
 	
 	
-	@PostMapping("/res")
-	public AuditResponse addFavorite(@RequestBody AuditDetails aud ) {
+	@PostMapping("/ProjectExecutionStatus")
+	public AuditResponse addFavorite(@RequestBody AuditDetails aud) {
+		System.out.println(aud.getCount());
 		AuditResponse ar= new AuditResponse();
 		Long score = null;
 		if(aud.getType().equals(benchmark.get(0).getAudit_type())) {
 			score = benchmark.get(0).getScore();
 			
 		}
-		else if(aud.getType().equals(benchmark.get(1).getAudit_type())) {
+		if(aud.getType().equals(benchmark.get(1).getAudit_type())) {
 			score = benchmark.get(1).getScore();
 			
 		}
-			
-			
+		projectService.saveResponse(aud.getProject());
+		auditDetailService.saveResponse(aud);
+		
 		if(aud.getCount() < score)
 		{
 			ar.setStatus("green");
 			ar.setRem_duration("No action needed");
+			ar.setDetail(aud);
 					
 		}
 		else
 		{
 			ar.setStatus("red");
 			ar.setRem_duration("2 weeks");
+			ar.setDetail(aud);
 		}
 		auditResponseService.saveResponse(ar);
 		return ar;

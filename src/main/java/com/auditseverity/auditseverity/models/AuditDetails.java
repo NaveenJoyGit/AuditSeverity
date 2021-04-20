@@ -23,25 +23,31 @@ public class AuditDetails {
 	@Column(name = "type")
 	private String type;
 
-	@Column(name = "Count")
-	private int Count;
+	@Column(name = "count")
+	private int count;
 
 	@JoinColumn(name = "date")
 	private String date;
 
+	@OneToOne(mappedBy = "detail")
+	private AuditResponse response;
+	
 	@OneToOne
 	@JoinColumn(name = "project_id")
 	private Project project;
 	
-	@OneToOne(mappedBy = "detail")
-	private AuditResponse response;
 
-	public AuditDetails(String type, int Count, String date, Project project) {
+
+	public AuditDetails(String type, int count, String date, Project project) {
 		super();
 		this.type = type;
-		this.Count = Count;
+		this.count = count;
 		this.date = date;
 		this.project = project;
+	}
+
+	public AuditDetails() {
+		super();
 	}
 
 	public int getId() {
@@ -77,11 +83,11 @@ public class AuditDetails {
 	}
 
 	public int getCount() {
-		return Count;
+		return count;
 	}
 
 	public void setCount(int count) {
-		Count = count;
+		this.count = count;
 	}
 
 	public AuditResponse getResponse() {

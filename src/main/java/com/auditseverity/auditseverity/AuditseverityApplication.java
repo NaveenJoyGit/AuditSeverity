@@ -25,11 +25,11 @@ public class AuditseverityApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		Project p1 = new Project("abc", "def", "hij"); 
-		AuditDetails ad1 = new AuditDetails("Internal", 4, "20/04/2021", p1);
-		
-		projectService.saveResponse(p1);
-		auditService.saveResponse(ad1);
+//		Project p1 = new Project("abc", "def", "hij"); 
+//		AuditDetails ad1 = new AuditDetails("Internal", 4, "20/04/2021", p1);
+//		
+//		projectService.saveResponse(p1);
+//		auditService.saveResponse(ad1);
 	}
 
 }

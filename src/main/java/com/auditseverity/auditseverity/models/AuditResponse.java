@@ -17,7 +17,7 @@ public class AuditResponse {
 
 	@Id
 	@Column(name = "id")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	
 		
@@ -31,11 +31,14 @@ public class AuditResponse {
 	@JoinColumn(name = "audit_id")
 	private AuditDetails detail;
 
-	public AuditResponse(int id, String status, String rem_duration) {
+
+
+
+	public AuditResponse(String status, String rem_duration, AuditDetails detail) {
 		super();
-		this.id = id;
 		this.status = status;
 		this.rem_duration = rem_duration;
+		this.detail = detail;
 	}
 	
 	
@@ -70,5 +73,14 @@ public class AuditResponse {
 		this.rem_duration = rem_duration;
 	}
 
+	public AuditDetails getDetail() {
+		return detail;
+	}
+	
+	
+	
+	public void setDetail(AuditDetails detail) {
+		this.detail = detail;
+	}
 	
 }

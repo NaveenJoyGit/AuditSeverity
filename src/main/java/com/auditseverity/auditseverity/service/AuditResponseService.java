@@ -16,7 +16,7 @@ public class AuditResponseService {
 	AuditResponseRepository auditResponseRepository;
 
 	@Transactional
-	public List<AuditResponse> getAllMovies() {
+	public List<AuditResponse> FindAllResponse() {
 
 		return auditResponseRepository.findAll();
 	}
