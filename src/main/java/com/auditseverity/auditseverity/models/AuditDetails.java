@@ -11,8 +11,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import lombok.Data;
+
 @Entity
 @Table
+@Data
 public class AuditDetails {
 
 	@Id
@@ -36,6 +39,8 @@ public class AuditDetails {
 	@JoinColumn(name = "project_id")
 	private Project project;
 	
+	private String token;
+		
 
 
 	public AuditDetails(String type, int count, String date, Project project) {
@@ -46,56 +51,5 @@ public class AuditDetails {
 		this.project = project;
 	}
 
-	public AuditDetails() {
-		super();
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
-	}
-
-	public String getDate() {
-		return date;
-	}
-
-	public void setDate(String date) {
-		this.date = date;
-	}
-
-	public Project getProject() {
-		return project;
-	}
-
-	public void setProject(Project project) {
-		this.project = project;
-	}
-
-	public int getCount() {
-		return count;
-	}
-
-	public void setCount(int count) {
-		this.count = count;
-	}
-
-	public AuditResponse getResponse() {
-		return response;
-	}
-
-	public void setResponse(AuditResponse response) {
-		this.response = response;
-	}
 
 }
