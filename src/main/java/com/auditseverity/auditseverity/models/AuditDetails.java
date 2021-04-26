@@ -1,5 +1,6 @@
 package com.auditseverity.auditseverity.models;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -10,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.Data;
 
@@ -30,7 +33,8 @@ public class AuditDetails {
 	private int count;
 
 	@JoinColumn(name = "date")
-	private String date;
+	@DateTimeFormat(pattern="yyyy-MM-dd")
+	private LocalDate date;
 
 	@OneToOne(mappedBy = "detail")
 	private AuditResponse response;
@@ -43,7 +47,7 @@ public class AuditDetails {
 		
 
 
-	public AuditDetails(String type, int count, String date, Project project) {
+	public AuditDetails(String type, int count, LocalDate date, Project project) {
 		super();
 		this.type = type;
 		this.count = count;

@@ -74,7 +74,8 @@ public class AuditController {
 		
 		String token = aud.getToken();
 		log.info(token);
-
+		log.info("--------date inside severity-----------");
+		log.info(aud.getDate().toString());
 		Long score = auditDetailService.getScore(aud, token);
 		projectService.saveResponse(aud.getProject());
 		auditDetailService.saveResponse(aud);
