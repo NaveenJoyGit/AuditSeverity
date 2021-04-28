@@ -39,7 +39,7 @@ public class AuditDetailsService {
 	}
 
 	@Transactional
-	public List<AuditDetails> getAllMovies() {
+	public List<AuditDetails> getAuditDetails() {
 
 		return auditDetailsRepository.findAll();
 	}
