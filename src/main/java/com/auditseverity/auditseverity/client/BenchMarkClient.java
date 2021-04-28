@@ -8,7 +8,8 @@ import org.springframework.web.bind.annotation.RequestHeader;
 
 import com.auditseverity.auditseverity.models.Benchmark;
 
-@FeignClient(url = "http://host.docker.internal:9090/api/AuditBenchMark", name = "BENCHMARK")
+@FeignClient(url = "${AUDIT_BENCHMARK_URI:http://host.docker.internal:9090/api/AuditBenchMark}", name = "BENCHMARK")
+//@FeignClient(url = "${AUDIT_BENCHMARK_URI:http://localhost:8200}", name = "BENCHMARK")
 public interface BenchMarkClient {
 
 	@GetMapping("/AuditBenchmark")

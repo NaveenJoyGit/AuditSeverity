@@ -51,29 +51,9 @@ public class AuditDetailsService {
 	}
 	
 	public Long getScore(AuditDetails aud, String token) {
-//		log.info(bearerToken + "Insisde severity micro");
-//		String url = "http://host.docker.internal:9090/api/AuditBenchMark/AuditBenchmark";
-//		log.info("-------getScore()----------");
-//		log.info(token);
-//		org.springframework.http.HttpHeaders headers = new org.springframework.http.HttpHeaders();
-//		headers.add("Authorization", token);	
-//		
-//		HttpEntity<String> request = new HttpEntity<>(headers);
-//		
-//		RestTemplate rt = new RestTemplate();	
-//		
-//		ResponseEntity<Benchmark[]> rs = rt.exchange(
-//			    url, HttpMethod.GET, request, Benchmark[].class);
-//		Benchmark b[] = rs.getBody();
-//		List<Benchmark> benchmark = Arrays.asList(b);
 		
 		List<Benchmark> benchmark = getBechmarks(token);
 		log.info("-----from aud-service------" + benchmark.get(0).getAudit_type());
-//		RestTemplate rt = new RestTemplate();
-//		
-//		ResponseEntity<Benchmark[]> rs = rt.getForEntity(url, Benchmark[].class);
-//		Benchmark b[] = rs.getBody();
-//		List<Benchmark> benchmark = Arrays.asList(b);
 		
 		
 		Long score = null;

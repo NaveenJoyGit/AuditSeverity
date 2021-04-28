@@ -41,36 +41,11 @@ public class AuditController {
 	@Autowired
 	ProjectService projectService;
 	
-	
-	
-//	org.springframework.http.HttpHeaders headers = new org.springframework.http.HttpHeaders();
-//	headers.add("Authorization", token);	
-//	
-//	HttpEntity<AuditDetails> request = new HttpEntity<>(headers);
-//	
-//	RestTemplate rt = new RestTemplate();	
-//	
-//	ResponseEntity<Benchmark[]> rs = rt.exchange(
-//		    url, HttpMethod.GET, request, Benchmark[].class);
-
-//	RestTemplate rt = new RestTemplate();
-//
-//	ResponseEntity<Benchmark[]> rs = rt.getForEntity("http://host.docker.internal:9090/api/AuditBenchMark", Benchmark[].class);
-//	Benchmark b[] = rs.getBody();
-//	List<Benchmark> benchmark = Arrays.asList(b);
 
 	@PostMapping("/ProjectExecutionStatus")
-	public AuditResponse addFavorite(@RequestBody AuditDetails aud) {
+	public AuditResponse getStatus(@RequestBody AuditDetails aud) {
+		
 		log.info("-------header in severity----------");
-//		log.info(request.getHeaders().getFirst("Authorization"));
-//		log.info(header.toString());
-		
-//		headers.forEach((key,value) ->{
-//            log.info("Header Name: "+key+" Header Value: "+value);
-//        });
-		
-//		String bearerToken = request.getHeader("Authorization");
-//		String token = bearerToken.substring(7, bearerToken.length());
 		
 		String token = aud.getToken();
 		log.info(token);
@@ -83,5 +58,6 @@ public class AuditController {
 		auditResponseService.setResponse(aud, score);
 
 		return auditResponseService.setResponse(aud, score);
+		
 	}
 }
