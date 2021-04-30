@@ -6,8 +6,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
-import com.auditseverity.auditseverity.models.AuditDetails;
-import com.auditseverity.auditseverity.models.Project;
 import com.auditseverity.auditseverity.service.AuditDetailsService;
 import com.auditseverity.auditseverity.service.ProjectService;
 

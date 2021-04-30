@@ -1,14 +1,9 @@
 package com.auditseverity.auditseverity;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.auditseverity.auditseverity.models.AuditDetails;
-import com.auditseverity.auditseverity.models.AuditResponse;
-import com.auditseverity.auditseverity.models.Project;
 import com.auditseverity.auditseverity.service.AuditDetailsService;
 import com.auditseverity.auditseverity.service.AuditResponseService;
 import com.auditseverity.auditseverity.service.ProjectService;
